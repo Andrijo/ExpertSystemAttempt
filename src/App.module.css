@@ -1,0 +1,121 @@
+:global(*),
+:global(*::before),
+:global(*::after) {
+  box-sizing: border-box;
+}
+
+:global(:root) {
+  --color-primary: #f2f4f3;
+  --color-primary-dark: #d9e0de;
+  --color-secondary: #282b4a;
+  --black: #000000;
+  --font-color: #000f08;
+}
+
+:global(body) {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--color-primary);
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background-color: var(--color-primary);
+  background-image:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(73, 17, 28, 0.15) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(217, 224, 222, 0.8) 0%,
+      transparent 45%
+    );
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  padding: 140px 45px 45px;
+  border-radius: 20px 2px 20px 2px;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  position: absolute;
+  top: -45px;
+  left: 55px;
+  z-index: 3;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  font-family: "Geist", sans-serif;
+  font-size: clamp(3rem, 7vw, 4rem);
+  color: var(--font-color);
+  padding: 0 14px;
+  background-color: rgba(242, 244, 243, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 4px;
+}
+
+.subtitle {
+  display: block;
+  color: var(--color-primary);
+  font-style: italic;
+  background-color: var(--color-secondary);
+  padding: 2px 20px 4px 0;
+  width: fit-content;
+  margin-left: -14px;
+}
+
+.description {
+  margin: 0 0 15px;
+  font-size: 0.85rem;
+  max-width: 450px;
+  text-align: start;
+  color: var(--font-color);
+}
+
+.results {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  list-style: none;
+}
+
+.resultsTitle {
+  margin: 0 0 12px;
+  font-size: 0.85rem;
+  color: var(--font-color);
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    align-items: flex-start;
+    padding-top: 96px;
+  }
+
+  .card {
+    padding: 120px 20px 24px;
+  }
+
+  .title {
+    top: -28px;
+    left: 12px;
+    padding: 0 10px;
+    line-height: 0.92;
+  }
+}

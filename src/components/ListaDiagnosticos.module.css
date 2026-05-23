@@ -1,0 +1,29 @@
+:global(:root) {
+  --color-primary: #f2f4f3;
+  --color-primary-dark: #d9e0de;
+  --color-secondary: #49111c;
+  --black: #000000;
+  --font-color: #000000;
+}
+
+.error {
+  color: #b00020;
+}
+
+.empty {
+  color: #666;
+  font-style: italic;
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style: square;
+}
+
+.item {
+  margin: 6px 0;
+  font-size: 0.7rem;
+  text-transform: capitalize;
+  color: var(--color-secondary);
+}
