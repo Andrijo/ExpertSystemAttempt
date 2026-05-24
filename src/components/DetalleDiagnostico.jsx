@@ -1,11 +1,9 @@
 import styles from "./DetalleDiagnostico.module.css"
 import { EXPLICACIONES } from "../data/explicaciones"
+import { getYoutubeSearchUrl } from "../utils/youtube"
 
 export function DetalleDiagnostico({ causa, sintomasDetectados, onVolver }) {
   const detalle = EXPLICACIONES[causa]
-
-  console.log("causa recibida:", causa)
-  console.log("detalle encontrado:", detalle)
 
   if (!detalle) {
     return (
@@ -75,6 +73,28 @@ export function DetalleDiagnostico({ causa, sintomasDetectados, onVolver }) {
           ))}
         </ul>
       </section>
+
+      {detalle.videos?.length > 0 && (
+        <section className={styles.section}>
+          <h4 className={styles.subtitle}>Videos relacionados</h4>
+          <ul className={styles.videosList}>
+            {detalle.videos.map((video, i) => (
+              <li key={i} className={styles.videoItem}>
+                <a
+                  href={getYoutubeSearchUrl(video.query)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.videoLink}>
+                  <span className={styles.videoIcon} aria-hidden="true">
+                    ▶
+                  </span>
+                  {video.titulo}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </div>
   )
 }

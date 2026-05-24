@@ -1,5 +1,5 @@
 export const EXPLICACIONES = {
-  // Explicaciones de memoria RAM
+  // Memoria RAM
   memoria_ram: {
     componente: "Memoria RAM",
     descripcion:
@@ -10,13 +10,13 @@ export const EXPLICACIONES = {
     sintomasRelacionados: [
       "pantallazo_azul",
       "reinicios_constantes",
-      "pitidos_al_arrancar", // secuencia de pitidos indica fallo de POST
+      "pitidos_al_arrancar",
       "pantalla_negra",
       "congelamientos",
       "sistema_lento",
       "archivos_corruptos",
       "error_no_bootable_device",
-      "ruidos_metalicos", // poco común, pero ranura dañada puede crujir
+      "ruidos_metalicos",
       "parpadeo_monitor",
       "apagado_repentino",
     ],
@@ -30,6 +30,24 @@ export const EXPLICACIONES = {
     ],
     urgencia: "critica",
     herramientas: ["MemTest86", "Windows Memory Diagnostic"],
+    videos: [
+      {
+        titulo: "Cómo usar MemTest86 paso a paso",
+        query: "memtest86 tutorial español como usar desde usb",
+      },
+      {
+        titulo: "Cómo reubicar y probar módulos de RAM",
+        query: "como reubicar memoria ram pc no detecta modulo",
+      },
+      {
+        titulo: "Diagnóstico de RAM con Windows Memory Diagnostic",
+        query: "windows memory diagnostic tutorial español ram",
+      },
+      {
+        titulo: "Cómo saber si tu RAM está fallando",
+        query: "como saber si memoria ram esta fallando sintomas",
+      },
+    ],
   },
 
   // Disco duro
@@ -44,14 +62,14 @@ export const EXPLICACIONES = {
       "congelamientos",
       "sistema_lento",
       "error_no_bootable_device",
-      "ruidos_metalicos", // exclusivo de HDD mecánico
+      "ruidos_metalicos",
       "archivos_corruptos",
       "reinicios_constantes",
       "pantalla_negra",
       "apagado_repentino",
       "pitidos_al_arrancar",
       "parpadeo_monitor",
-      "calentamiento", // SSDs y HDDs se calientan con lecturas intensas
+      "calentamiento",
     ],
     pasos: [
       "Ejecuta CrystalDiskInfo (Windows) o smartmontools (Linux/Mac) para leer el estado S.M.A.R.T.",
@@ -67,6 +85,24 @@ export const EXPLICACIONES = {
       "smartmontools",
       "chkdsk",
       "GSmartControl",
+    ],
+    videos: [
+      {
+        titulo: "Cómo usar CrystalDiskInfo y leer S.M.A.R.T.",
+        query: "crystaldiskinfo como leer smart disco duro tutorial español",
+      },
+      {
+        titulo: "Ejecutar chkdsk correctamente en Windows",
+        query: "chkdsk tutorial español reparar disco duro sectores",
+      },
+      {
+        titulo: "Señales de que tu disco duro se está muriendo",
+        query: "disco duro muriendo sintomas señales ruidos",
+      },
+      {
+        titulo: "Cómo recuperar datos de un disco duro dañado",
+        query: "recuperar datos disco duro dañado español tutorial",
+      },
     ],
   },
 
@@ -89,6 +125,20 @@ export const EXPLICACIONES = {
     ],
     urgencia: "preventiva",
     herramientas: ["HWMonitor", "CoreTemp", "alcohol isopropílico 90%+"],
+    videos: [
+      {
+        titulo: "Cómo cambiar la pasta térmica correctamente",
+        query: "como cambiar pasta termica cpu paso a paso español",
+      },
+      {
+        titulo: "Cuánta pasta térmica aplicar y cómo distribuirla",
+        query: "cuanta pasta termica aplicar cpu metodos correctos",
+      },
+      {
+        titulo: "Mejores pastas térmicas y cuál comprar",
+        query: "mejores pastas termicas cpu comparativa español 2024",
+      },
+    ],
   },
 
   // Ventilador
@@ -101,11 +151,11 @@ export const EXPLICACIONES = {
       "emitir pitidos, impedir el arranque o apagar el equipo por protección térmica.",
     sintomasRelacionados: [
       "calentamiento",
-      "ruido_excesivo", // rodamiento desgastado
-      "apagado_repentino", // protección térmica
-      "pc_no_enciende", // BIOS bloquea arranque por fan fault
-      "pitidos_al_arrancar", // código de fallo de ventilador CPU
-      "parpadeo_monitor", // inestabilidad por temperatura
+      "ruido_excesivo",
+      "apagado_repentino",
+      "pc_no_enciende",
+      "pitidos_al_arrancar",
+      "parpadeo_monitor",
     ],
     pasos: [
       "Al encender, observa si todos los ventiladores (CPU, GPU, gabinete) giran.",
@@ -117,6 +167,24 @@ export const EXPLICACIONES = {
     ],
     urgencia: "critica",
     herramientas: ["HWMonitor", "SpeedFan", "BIOS Fan Control"],
+    videos: [
+      {
+        titulo: "Cómo limpiar el PC con aire comprimido",
+        query: "como limpiar pc polvo aire comprimido tutorial ventiladores",
+      },
+      {
+        titulo: "Cómo conectar ventiladores correctamente a la placa base",
+        query: "como conectar ventiladores placa madre cpu fan header",
+      },
+      {
+        titulo: "Cómo controlar la velocidad de los fans desde BIOS",
+        query: "como controlar velocidad ventiladores bios fan curve español",
+      },
+      {
+        titulo: "Cómo reemplazar el ventilador de CPU",
+        query: "como cambiar ventilador cpu disipador tutorial español",
+      },
+    ],
   },
 
   // Procesador
@@ -144,6 +212,24 @@ export const EXPLICACIONES = {
     ],
     urgencia: "critica",
     herramientas: ["HWMonitor", "CoreTemp", "CPU-Z", "Prime95 (stress test)"],
+    videos: [
+      {
+        titulo: "Cómo revisar la temperatura de tu CPU en tiempo real",
+        query: "como ver temperatura cpu hwmonitor coretemp tutorial español",
+      },
+      {
+        titulo: "Temperaturas normales de CPU en reposo y bajo carga",
+        query: "temperaturas normales cpu gaming reposo que es normal español",
+      },
+      {
+        titulo: "Qué es el throttling térmico y cómo solucionarlo",
+        query: "que es thermal throttling cpu como solucionar español",
+      },
+      {
+        titulo: "Stress test de CPU con Prime95",
+        query: "prime95 stress test cpu tutorial español como usar",
+      },
+    ],
   },
 
   // Fuente de poder
@@ -171,6 +257,24 @@ export const EXPLICACIONES = {
     ],
     urgencia: "critica",
     herramientas: ["Tester de PSU", "Multímetro", "HWMonitor (voltajes)"],
+    videos: [
+      {
+        titulo: "Cómo probar una fuente de poder con tester",
+        query: "como probar fuente de poder psu tester multimetro tutorial",
+      },
+      {
+        titulo: "Síntomas de fuente de poder dañada o insuficiente",
+        query: "fuente de poder dañada insuficiente sintomas señales pc",
+      },
+      {
+        titulo: "Cómo elegir una fuente de poder para tu PC",
+        query: "como elegir fuente de poder psu watts pc gaming español",
+      },
+      {
+        titulo: "Cómo calcular los watts que necesita tu PC",
+        query: "calcular watts fuente poder pc pcpartpicker tutorial español",
+      },
+    ],
   },
 
   // Tarjeta gráfica
@@ -186,9 +290,9 @@ export const EXPLICACIONES = {
       "artifacts_pantalla",
       "pantalla_negra",
       "parpadeo_monitor",
-      "calentamiento", // GPU genera mucho calor bajo carga
-      "fallo_driver", // driver crash o pantalla negra por driver
-      "apagado_repentino", // protección térmica de GPU
+      "calentamiento",
+      "fallo_driver",
+      "apagado_repentino",
     ],
     pasos: [
       "Reinstala los drivers usando DDU (Display Driver Uninstaller) en modo seguro, luego instala la versión más reciente.",
@@ -205,6 +309,24 @@ export const EXPLICACIONES = {
       "GPU-Z",
       "MSI Afterburner",
       "FurMark (stress test)",
+    ],
+    videos: [
+      {
+        titulo: "Cómo desinstalar drivers de GPU con DDU correctamente",
+        query: "display driver uninstaller ddu tutorial español como usar",
+      },
+      {
+        titulo: "Cómo reubicar la tarjeta gráfica en el slot PCIe",
+        query: "como reubicar tarjeta grafica pcie limpiar contactos tutorial",
+      },
+      {
+        titulo: "Cómo revisar temperatura de GPU con MSI Afterburner",
+        query: "msi afterburner temperatura gpu monitoreo tutorial español",
+      },
+      {
+        titulo: "Stress test de GPU con FurMark",
+        query: "furmark stress test gpu tutorial español artefactos",
+      },
     ],
   },
 }
