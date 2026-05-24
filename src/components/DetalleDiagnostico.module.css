@@ -47,8 +47,12 @@
 
 .text {
   margin: 0;
-  line-height: 1.6;
-  color: #555;
+  color: var(--font-color);
+  opacity: 0.8;
+}
+
+.list {
+  margin: 0;
 }
 
 .chips {

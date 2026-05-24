@@ -40,7 +40,7 @@ export function DetalleDiagnostico({ causa, sintomasDetectados, onVolver }) {
       <section className={styles.section}>
         <h4 className={styles.subtitle}>¿Cómo se llegó a esta conclusión?</h4>
         <p className={styles.text}>
-          Se llegó a esta conclusión porque los síntomas que reportaste
+          Se llegó a esta conclusión porque los síntomas que se reportaron
           coinciden con los síntomas asociados a este componente en la base de
           conocimiento.
         </p>
@@ -60,6 +60,17 @@ export function DetalleDiagnostico({ causa, sintomasDetectados, onVolver }) {
           {detalle.pasos.map((paso, i) => (
             <li key={i} className={styles.listItem}>
               {paso}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={styles.section}>
+        <h4 className={styles.subtitle}>Herramientas sugeridas</h4>
+        <ul className={styles.list}>
+          {detalle.herramientas.map((herramienta, i) => (
+            <li key={i} className={styles.listItem}>
+              {herramienta}
             </li>
           ))}
         </ul>
