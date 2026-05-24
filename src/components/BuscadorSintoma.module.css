@@ -22,12 +22,17 @@
   -webkit-backdrop-filter: blur(14px);
 }
 
+.input:focus {
+  outline: none;
+  border: 2px solid var(--color-secondary);
+}
+
 .button {
   padding: 8px 16px;
   background-color: var(--color-secondary);
   color: var(--color-primary);
   border: none;
-  border-radius: 2px;
+  border-radius: 4px;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
 }
@@ -35,4 +40,16 @@
 .button:disabled {
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .input,
+  .button {
+    width: 100%;
+  }
 }

@@ -2,10 +2,12 @@
 export const BASE_CONOCIMIENTO = `
   % Base de hechos
   
-  % Memoria RAM
+  % Memoria RAM (causa, consecuencia)
   causa(memoria_ram, pantallazo_azul).
   causa(memoria_ram, reinicios_constantes).
   causa(memoria_ram, pitidos_al_arrancar).
+  causa(memoria_ram, pantalla_negra).
+  causa(memoria_ram, congelamientos).
   
   % Almacenamiento (Disco Duro / SSD)
   causa(disco_duro, congelamientos).
