@@ -20,6 +20,7 @@ export default function DiagnosticoPC() {
     diagnosticos,
     sintomasDetectados,
     error,
+    palabraProhibida,
     isLoading,
     hasSearched,
     analizarSintoma,
@@ -106,6 +107,12 @@ export default function DiagnosticoPC() {
           onAnalizar={handlerAnalizar}
           isLoading={isLoading}
         />
+
+        {palabraProhibida && (
+          <p className={styles.errorMessage}>
+            La palabra <strong>{palabraProhibida}</strong> no está permitida.
+          </p>
+        )}
 
         {mostrarResultados && (
           <div ref={resultsRef} className={styles.results}>

@@ -1,12 +1,13 @@
 import { useState, useCallback } from "react"
 import { BASE_CONOCIMIENTO } from "../data/baseConocimiento"
 import { extraerSintomas } from "../utils/extraerSintoma"
-import { contienePalabrasProhibidas } from "../utils/contienePalabrasProhibidas"
+import { obtenerPalabraProhibida } from "../utils/contienePalabrasProhibidas"
 
 export function useDiagnosticoPC() {
   const [diagnosticos, setDiagnosticos] = useState([])
   const [sintomasDetectados, setSintomasDetectados] = useState([])
   const [error, setError] = useState(null)
+  const [palabraProhibida, setPalabraProhibida] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [hasSearched, setHasSearched] = useState(false)
 
@@ -14,6 +15,7 @@ export function useDiagnosticoPC() {
     setDiagnosticos([])
     setSintomasDetectados([])
     setError(null)
+    setPalabraProhibida(null)
     setHasSearched(false)
   }, [])
 
@@ -56,13 +58,19 @@ export function useDiagnosticoPC() {
         return
       }
 
-      if (contienePalabrasProhibidas(texto)) {
+      const palabraDetectada = obtenerPalabraProhibida(texto)
+
+      if (palabraDetectada) {
         setDiagnosticos([])
         setSintomasDetectados([])
-        setError("El texto contiene palabras no permitidas.")
+        setPalabraProhibida(palabraDetectada)
+        setError(`Se detectó una palabra no permitida: "${palabraDetectada}".`)
+        setHasSearched(true)
         setIsLoading(false)
         return
       }
+
+      setPalabraProhibida(null)
 
       const sintomas = extraerSintomas(texto)
 
@@ -99,6 +107,7 @@ export function useDiagnosticoPC() {
     diagnosticos,
     sintomasDetectados,
     error,
+    palabraProhibida,
     isLoading,
     hasSearched,
     analizarSintoma,

@@ -2,14 +2,18 @@ import { PALABRAS_PROHIBIDAS } from "../data/palabrasProhibidas"
 
 const escaparRegex = (texto) => texto.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
 
-export const contienePalabrasProhibidas = (texto) => {
-  const normalizado = texto.toLowerCase()
+export const obtenerPalabraProhibida = (texto) => {
+  const normalizado = texto.toLowerCase().trim()
 
-  return PALABRAS_PROHIBIDAS.some((palabra) => {
+  for (const palabra of PALABRAS_PROHIBIDAS) {
     const regex = new RegExp(
       `\\b${escaparRegex(palabra.toLowerCase())}\\b`,
       "i",
     )
-    return regex.test(normalizado)
-  })
+    if (regex.test(normalizado)) {
+      return palabra
+    }
+  }
+
+  return null
 }

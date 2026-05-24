@@ -90,6 +90,16 @@
   color: var(--font-color);
 }
 
+.errorMessage {
+  margin-top: 10px;
+  color: var(--color-secondary);
+  font-size: 0.8rem;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
 .results {
   margin-top: 20px;
   font-size: 0.85rem;
