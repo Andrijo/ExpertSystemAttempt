@@ -7,6 +7,7 @@ const PATRONES = [
       "bsod",
       "pantalla azul de la muerte",
       "blue screen",
+      "se pone azul",
     ],
     sintoma: "pantallazo_azul",
   },
@@ -33,6 +34,8 @@ const PATRONES = [
     palabras: [
       "no enciende",
       "no prende",
+      "no hace nada",
+      "no pasa nada",
       "no arranca la pc",
       "no arranca la computadora",
       "no da señal",
@@ -58,13 +61,14 @@ const PATRONES = [
     sintoma: "pantalla_negra",
   },
 
-  // ──Para parpadeo de monitor
+  // Oara parpadeo
   {
     palabras: [
       "parpadea la pantalla",
       "parpadea el monitor",
       "pantalla parpadea",
       "monitor parpadea",
+      "parpadea",
       "pantalla titila",
       "titila",
       "titileo",
@@ -87,6 +91,7 @@ const PATRONES = [
       "imagen distorsionada",
       "glitch en pantalla",
       "glitches",
+      "tiene rayas",
       "cuadros en pantalla",
       "artifacts",
       "artefactos visuales",
@@ -99,6 +104,7 @@ const PATRONES = [
     palabras: [
       "error de driver",
       "fallo de driver",
+      "falla el driver",
       "driver caido",
       "controlador falló",
       "error de controlador",
@@ -185,12 +191,14 @@ const PATRONES = [
       "muy lenta",
       "va lenta",
       "va lento",
+      "bien lenta",
       "tarda mucho",
       "esta lenta",
       "está lenta",
       "demasiado lenta",
       "demasiado lento",
       "tardísimo",
+      "tarda mucho",
       "carga muy lento",
       "abre lento",
       "responde lento",
@@ -221,6 +229,8 @@ const PATRONES = [
   {
     palabras: [
       "se calienta",
+      "calor",
+      "expulsa calor",
       "caliente",
       "calentamiento",
       "sobrecalentamiento",

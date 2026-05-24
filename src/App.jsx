@@ -4,17 +4,20 @@ import { useGSAP } from "@gsap/react"
 import { useDiagnosticoPC } from "./hooks/useDiagnosticoPC"
 import { BuscadorSintoma } from "./components/BuscadorSintoma"
 import { ListaDiagnosticos } from "./components/ListaDiagnosticos"
+import { DetalleDiagnostico } from "./components/DetalleDiagnostico"
 import styles from "./App.module.css"
 
 gsap.registerPlugin(useGSAP)
 
 export default function DiagnosticoPC() {
   const [draftSintoma, setDraftSintoma] = useState("")
+  const [causaSeleccionada, setCausaSeleccionada] = useState(null)
 
   const cardRef = useRef(null)
   const titleRef = useRef(null)
   const descriptionRef = useRef(null)
   const resultsRef = useRef(null)
+  const detailRef = useRef(null)
 
   const {
     diagnosticos,
@@ -29,14 +32,26 @@ export default function DiagnosticoPC() {
 
   const handleChangeSintoma = (nuevoValor) => {
     setDraftSintoma(nuevoValor)
+    setCausaSeleccionada(null)
     limpiarDiagnosticos()
   }
 
   const handlerAnalizar = () => {
+    setCausaSeleccionada(null)
     analizarSintoma(draftSintoma.trim())
   }
 
-  const mostrarResultados = hasSearched
+  const handleSeleccionarCausa = (causa) => {
+    console.log("Seleccionada: ", causa)
+    setCausaSeleccionada(causa)
+  }
+
+  const handleVolver = () => {
+    setCausaSeleccionada(null)
+  }
+
+  const mostrarResultados = hasSearched && !causaSeleccionada
+  const mostrarDetalle = !!causaSeleccionada
 
   useGSAP(() => {
     const tl = gsap.timeline()
@@ -70,7 +85,7 @@ export default function DiagnosticoPC() {
   }, [])
 
   useGSAP(() => {
-    if (!resultsRef.current) return
+    if (!resultsRef.current || !mostrarResultados) return
 
     gsap.fromTo(
       resultsRef.current,
@@ -87,6 +102,25 @@ export default function DiagnosticoPC() {
       },
     )
   }, [mostrarResultados, diagnosticos, sintomasDetectados, error])
+
+  useGSAP(() => {
+    if (!detailRef.current || !mostrarDetalle) return
+
+    gsap.fromTo(
+      detailRef.current,
+      {
+        y: 16,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.35,
+        ease: "power2.out",
+        clearProps: "all",
+      },
+    )
+  }, [mostrarDetalle, causaSeleccionada])
 
   return (
     <div className={styles.wrapper}>
@@ -128,7 +162,21 @@ export default function DiagnosticoPC() {
             )}
 
             <h4 className={styles.resultsTitle}>Posibles causas:</h4>
-            <ListaDiagnosticos diagnosticos={diagnosticos} error={error} />
+            <ListaDiagnosticos
+              diagnosticos={diagnosticos}
+              error={error}
+              onSeleccionar={handleSeleccionarCausa}
+            />
+          </div>
+        )}
+
+        {mostrarDetalle && (
+          <div ref={detailRef} className={styles.results}>
+            <DetalleDiagnostico
+              causa={causaSeleccionada}
+              sintomasDetectados={sintomasDetectados}
+              onVolver={handleVolver}
+            />
           </div>
         )}
       </div>

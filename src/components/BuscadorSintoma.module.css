@@ -18,6 +18,7 @@
   border-radius: 4px;
   background-color: var(--color-primary);
   backdrop-filter: blur(14px);
+  border: 1px solid var(--color-primary-dark);
   font-family: "Montserrat", sans-serif;
   -webkit-backdrop-filter: blur(14px);
 }

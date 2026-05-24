@@ -3,7 +3,7 @@
   --color-primary-dark: #d9e0de;
   --color-secondary: #49111c;
   --black: #000000;
-  --font-color: #000000;
+  --font-color: #000f08;
 }
 
 .error {
@@ -16,14 +16,44 @@
 }
 
 .list {
+  list-style: none;
+  padding: 0;
   margin: 0;
-  padding-left: 1.2rem;
-  list-style: square;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .item {
-  margin: 6px 0;
-  font-size: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary-dark);
+  border-radius: 4px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.item:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.name {
   text-transform: capitalize;
-  color: var(--color-secondary);
+  color: var(--font-color);
+}
+
+.arrow {
+  color: #666;
+}
+
+.empty,
+.error {
+  margin: 0;
+  color: #666;
 }
