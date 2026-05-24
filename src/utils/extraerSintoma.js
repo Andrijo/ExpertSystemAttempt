@@ -195,6 +195,7 @@ const PATRONES = [
       "abre lento",
       "responde lento",
       "pésimo rendimiento",
+      "lentitud",
     ],
     sintoma: "sistema_lento",
   },

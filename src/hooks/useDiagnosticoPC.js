@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react"
 import { BASE_CONOCIMIENTO } from "../data/baseConocimiento"
 import { extraerSintomas } from "../utils/extraerSintoma"
+import { contienePalabrasProhibidas } from "../utils/contienePalabrasProhibidas"
 
 export function useDiagnosticoPC() {
   const [diagnosticos, setDiagnosticos] = useState([])
@@ -52,6 +53,14 @@ export function useDiagnosticoPC() {
     async (texto) => {
       if (typeof texto !== "string" || !texto.trim()) {
         limpiarDiagnosticos()
+        return
+      }
+
+      if (contienePalabrasProhibidas(texto)) {
+        setDiagnosticos([])
+        setSintomasDetectados([])
+        setError("El texto contiene palabras no permitidas.")
+        setIsLoading(false)
         return
       }
 
