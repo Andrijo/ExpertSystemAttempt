@@ -128,7 +128,7 @@ export default function DiagnosticoPC() {
             )}
 
             <h4 className={styles.resultsTitle}>Posibles causas:</h4>
-            <ListaDiagnosticos diagnosticos={diagnosticos} error={error} />
+            <ListaDiagnosticos diagnosticos={diagnosticos} error={error} hasSearched={hasSearched} />
           </div>
         )}
       </div>

@@ -27,3 +27,22 @@
   text-transform: capitalize;
   color: var(--color-secondary);
 }
+
+.emptyContainer {
+  background: rgba(73, 17, 28, 0.03);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0 0 0;
+}
+
+.emptyTitle {
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.suggestions {
+  margin: 8px 0 0 1.1rem;
+  color: #444;
+  font-size: 0.85rem;
+}
