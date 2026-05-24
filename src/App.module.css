@@ -102,6 +102,27 @@
   color: var(--font-color);
 }
 
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+}
+
+.chip {
+  background: var(--color-secondary);
+  border-radius: 4px;
+  padding: 2px 10px;
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  text-transform: lowercase;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Estilo para dispositivos móviles */
+
 @media (max-width: 640px) {
   .wrapper {
     align-items: flex-start;
@@ -117,5 +138,33 @@
     left: 12px;
     padding: 0 10px;
     line-height: 0.92;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
+  .subtitle {
+    padding: 2px 14px 4px 0;
+    margin-left: -10px;
+  }
+
+  .results {
+    margin-top: 14px;
+  }
+
+  .resultsTitle {
+    margin: 0 0 8px;
+  }
+
+  .chips {
+    gap: 4px;
+    margin-bottom: 10px;
+    font-size: 0.75rem;
+  }
+
+  .chip {
+    padding: 2px 8px;
+    font-size: 0.65rem;
   }
 }

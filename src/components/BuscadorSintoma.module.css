@@ -15,6 +15,11 @@
 .input {
   flex: 1;
   padding: 8px;
+  border-radius: 4px;
+  background-color: var(--color-primary);
+  backdrop-filter: blur(14px);
+  font-family: "Montserrat", sans-serif;
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .button {

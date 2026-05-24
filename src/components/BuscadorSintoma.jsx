@@ -1,15 +1,21 @@
 import styles from "./BuscadorSintoma.module.css"
 
 export function BuscadorSintoma({ value, onChange, onAnalizar, isLoading }) {
-  const normalizarSintoma = (texto) =>
-    texto.toLowerCase().replace(/[\s-]+/g, "_")
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") onAnalizar()
+  const handleChange = (e) => {
+    onChange(e.target.value)
   }
 
-  const handleChange = (e) => {
-    onChange(normalizarSintoma(e.target.value))
+  const handleSubmit = () => {
+    const valorLimpio = value.trim()
+    if (!valorLimpio || isLoading) return
+    onAnalizar(valorLimpio)
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault()
+      handleSubmit()
+    }
   }
 
   return (
@@ -25,7 +31,7 @@ export function BuscadorSintoma({ value, onChange, onAnalizar, isLoading }) {
       />
 
       <button
-        onClick={onAnalizar}
+        onClick={handleSubmit}
         disabled={isLoading || !value.trim()}
         className={styles.button}>
         {isLoading ? "Analizando…" : "Analizar"}
