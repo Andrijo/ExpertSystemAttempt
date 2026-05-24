@@ -85,7 +85,7 @@
 .description {
   margin: 0 0 15px;
   font-size: 0.85rem;
-  max-width: 450px;
+  max-width: 500px;
   text-align: start;
   color: var(--font-color);
 }

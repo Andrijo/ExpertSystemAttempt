@@ -7,11 +7,13 @@ export function useDiagnosticoPC() {
   const [sintomasDetectados, setSintomasDetectados] = useState([])
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [hasSearched, setHasSearched] = useState(false)
 
   const limpiarDiagnosticos = useCallback(() => {
     setDiagnosticos([])
     setSintomasDetectados([])
     setError(null)
+    setHasSearched(false)
   }, [])
 
   const consultarSintoma = useCallback((session, sintoma) => {
@@ -54,6 +56,8 @@ export function useDiagnosticoPC() {
       }
 
       const sintomas = extraerSintomas(texto)
+
+      setHasSearched(true)
       setSintomasDetectados(sintomas)
       setIsLoading(true)
       setError(null)
@@ -63,12 +67,10 @@ export function useDiagnosticoPC() {
 
       session.consult(BASE_CONOCIMIENTO, {
         success: async () => {
-          // Consulta para múltiples síntomas en paralelo
           const resultadosPorSintoma = await Promise.all(
             sintomas.map((s) => consultarSintoma(session, s)),
           )
 
-          // Eliminar duplicados
           const todos = resultadosPorSintoma.flat()
           const unicos = [...new Set(todos)]
 
@@ -89,6 +91,7 @@ export function useDiagnosticoPC() {
     sintomasDetectados,
     error,
     isLoading,
+    hasSearched,
     analizarSintoma,
     limpiarDiagnosticos,
   }
