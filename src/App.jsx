@@ -42,8 +42,12 @@ export default function DiagnosticoPC() {
   }
 
   const handleSeleccionarCausa = (causa) => {
-    console.log("Seleccionada: ", causa)
-    setCausaSeleccionada(causa)
+    gsap.to(resultsRef.current, {
+      y: -10,
+      opacity: 0,
+      ease: "power2.in",
+      onComplete: () => setCausaSeleccionada(causa),
+    })
   }
 
   const handleVolver = () => {
@@ -109,14 +113,16 @@ export default function DiagnosticoPC() {
     gsap.fromTo(
       detailRef.current,
       {
-        y: 16,
+        y: 20,
         opacity: 0,
+        scale: 0.98,
       },
       {
         y: 0,
         opacity: 1,
-        duration: 0.35,
-        ease: "power2.out",
+        scale: 1,
+        duration: 0.4,
+        ease: "back.out(1.4)",
         clearProps: "all",
       },
     )
