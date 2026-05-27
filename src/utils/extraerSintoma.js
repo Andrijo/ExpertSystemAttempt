@@ -1,5 +1,5 @@
 const PATRONES = [
-  // Palabras clave para pantallazo azul
+  // Pantallazo azul
   {
     palabras: [
       "pantallazo azul",
@@ -8,11 +8,13 @@ const PATRONES = [
       "pantalla azul de la muerte",
       "blue screen",
       "se pone azul",
+      "pantallazo",
+      "error azul",
     ],
     sintoma: "pantallazo_azul",
   },
 
-  // Palabras clave para pitidos
+  // Pitidos al arrancar
   {
     palabras: [
       "pita al arrancar",
@@ -25,11 +27,13 @@ const PATRONES = [
       "suena al encender",
       "pitidos al arrancar",
       "emite pitidos",
+      "beep al encender",
+      "beeps",
     ],
     sintoma: "pitidos_al_arrancar",
   },
 
-  // Para PC que no enciende
+  // PC que no enciende
   {
     palabras: [
       "no enciende",
@@ -43,11 +47,13 @@ const PATRONES = [
       "pc muerta",
       "computadora no enciende",
       "no inicia la pc",
+      "no prende la pc",
+      "no da imagen ni enciende",
     ],
     sintoma: "pc_no_enciende",
   },
 
-  // Para pantalla negra
+  // Pantalla negra
   {
     palabras: [
       "pantalla negra",
@@ -57,11 +63,13 @@ const PATRONES = [
       "pantalla apagada pero pc encendida",
       "no hay imagen",
       "sin imagen",
+      "sin video",
+      "monitor sin señal",
     ],
     sintoma: "pantalla_negra",
   },
 
-  // Oara parpadeo
+  // Parpadeo monitor
   {
     palabras: [
       "parpadea la pantalla",
@@ -75,11 +83,13 @@ const PATRONES = [
       "la imagen parpadea",
       "pantalla intermitente",
       "destellos en pantalla",
+      "flicker",
+      "pantalla con destellos",
     ],
     sintoma: "parpadeo_monitor",
   },
 
-  // Para cosas en la pantalla
+  // Artefactos
   {
     palabras: [
       "artefactos en pantalla",
@@ -95,11 +105,14 @@ const PATRONES = [
       "cuadros en pantalla",
       "artifacts",
       "artefactos visuales",
+      "pixeles verdes",
+      "píxeles verdes",
+      "cuadriculado",
     ],
     sintoma: "artifacts_pantalla",
   },
 
-  // Para fallos de driver
+  // Fallo driver
   {
     palabras: [
       "error de driver",
@@ -112,11 +125,14 @@ const PATRONES = [
       "pantalla negra por driver",
       "driver crash",
       "driver se cayó",
+      "driver de pantalla",
+      "controlador de video",
+      "pantallazo por driver",
     ],
     sintoma: "fallo_driver",
   },
 
-  // Para no bootable device
+  // Error de arranque
   {
     palabras: [
       "no bootea",
@@ -131,11 +147,15 @@ const PATRONES = [
       "falla al iniciar",
       "no carga el sistema operativo",
       "no inicia el sistema",
+      "boot device not found",
+      "no boot device",
+      "no bootable device",
+      "no encuentra el sistema operativo",
     ],
     sintoma: "error_no_bootable_device",
   },
 
-  // Para reinicios constantes
+  // Reinicios constantes
   {
     palabras: [
       "se reinicia solo",
@@ -149,11 +169,12 @@ const PATRONES = [
       "se resetea",
       "bucle de reinicio",
       "loop de reinicio",
+      "reinicia sin parar",
     ],
     sintoma: "reinicios_constantes",
   },
 
-  // Para apagado repentino
+  // Apagado repentino
   {
     palabras: [
       "se apaga sola",
@@ -165,11 +186,13 @@ const PATRONES = [
       "apagado inesperado",
       "cierra todo de golpe",
       "apagados repentinos",
+      "se corta la energia",
+      "se corta la luz",
     ],
     sintoma: "apagado_repentino",
   },
 
-  // Para congelamientos
+  // Congelamientos
   {
     palabras: [
       "se congela",
@@ -182,11 +205,12 @@ const PATRONES = [
       "se paraliza",
       "pantalla congelada",
       "se queda pegada",
+      "se bloquea",
     ],
     sintoma: "congelamientos",
   },
 
-  // Para sistema lento
+  // Sistema lento
   {
     palabras: [
       "muy lenta",
@@ -199,7 +223,6 @@ const PATRONES = [
       "demasiado lenta",
       "demasiado lento",
       "tardísimo",
-      "tarda mucho",
       "tarda demasiado",
       "tarda en cargar",
       "carga lento",
@@ -208,11 +231,12 @@ const PATRONES = [
       "responde lento",
       "pésimo rendimiento",
       "lentitud",
+      "se pone lenta",
     ],
     sintoma: "sistema_lento",
   },
 
-  // Para archivos corruptos
+  // Archivos corruptos
   {
     palabras: [
       "archivos corruptos",
@@ -225,11 +249,12 @@ const PATRONES = [
       "archivos perdidos",
       "archivos desaparecieron",
       "se corrompieron los archivos",
+      "documentos dañados",
     ],
     sintoma: "archivos_corruptos",
   },
 
-  // Para calentamiento
+  // Calentamiento
   {
     palabras: [
       "se calienta",
@@ -247,11 +272,13 @@ const PATRONES = [
       "ventilador a tope",
       "ventilador al máximo",
       "fan a tope",
+      "se calienta demasiado",
+      "se calienta mucho",
     ],
     sintoma: "calentamiento",
   },
 
-  // Para ruidos metálicos
+  // Ruidos metálicos
   {
     palabras: [
       "ruido metalico",
@@ -266,11 +293,14 @@ const PATRONES = [
       "disco hace ruido",
       "golpeteo",
       "raspado",
+      "clics del disco",
+      "ruido del hdd",
+      "se escucha el disco",
     ],
     sintoma: "ruidos_metalicos",
   },
 
-  // Para ruido
+  // Ruido excesivo
   {
     palabras: [
       "mucho ruido",
@@ -283,11 +313,13 @@ const PATRONES = [
       "zumbido constante",
       "zumba mucho",
       "suena muy fuerte",
+      "ruido fuerte",
+      "sonido fuerte",
     ],
     sintoma: "ruido_excesivo",
   },
 
-  // Para olor a quemado
+  // Olor a quemado
   {
     palabras: [
       "huele a quemado",
@@ -300,8 +332,25 @@ const PATRONES = [
       "olor a plástico quemado",
       "olor a electrónico quemado",
       "olor a circuito",
+      "olor a quemado fuerte",
     ],
     sintoma: "olor_a_quemado",
+  },
+
+  // No carga
+  {
+    palabras: [
+      "no carga",
+      "no carga la bateria",
+      "no carga la batería",
+      "no carga el cargador",
+      "no toma carga",
+      "no entra carga",
+      "carga intermitente",
+      "bateria no carga",
+      "batería no carga",
+    ],
+    sintoma: "no_carga",
   },
 ]
 
@@ -313,7 +362,6 @@ export const extraerSintomas = (texto) => {
   ).map(({ sintoma }) => sintoma)
 
   if (encontrados.length > 0) return encontrados
-
-  // Fallback: convierte el texto a un átomo Prolog válido.
-  return [normalizado.replace(/[\s-]+/g, "_")]
+  return []
+  //return [normalizado.replace(/[\s-]+/g, "_")]
 }

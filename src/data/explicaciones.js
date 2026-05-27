@@ -16,7 +16,6 @@ export const EXPLICACIONES = {
       "sistema_lento",
       "archivos_corruptos",
       "error_no_bootable_device",
-      "ruidos_metalicos",
       "parpadeo_monitor",
       "apagado_repentino",
     ],
@@ -68,7 +67,6 @@ export const EXPLICACIONES = {
       "pantalla_negra",
       "apagado_repentino",
       "pitidos_al_arrancar",
-      "parpadeo_monitor",
       "calentamiento",
     ],
     pasos: [
@@ -113,8 +111,21 @@ export const EXPLICACIONES = {
       "La pasta térmica rellena las micro-imperfecciones entre el procesador " +
       "y el disipador, conduciendo el calor de forma eficiente. " +
       "Con el tiempo (2–5 años) se reseca y pierde eficiencia, provocando que " +
-      "la CPU suba de temperatura aunque el ventilador funcione correctamente.",
-    sintomasRelacionados: ["calentamiento"],
+      "la CPU suba de temperatura aunque el ventilador funcione correctamente. " +
+      "En casos graves, el calor acumulado puede desencadenar congelamientos, " +
+      "reinicios y apagados de protección.",
+    sintomasRelacionados: [
+      "calentamiento",
+      "apagado_repentino",
+      "sistema_lento",
+      "congelamientos",
+      "reinicios_constantes",
+      "pantalla_negra",
+      "ruido_excesivo",
+      "pitidos_al_arrancar",
+      "parpadeo_monitor",
+      "pantallazo_azul",
+    ],
     pasos: [
       "Retira el disipador de la CPU con cuidado (desconecta el ventilador primero).",
       "Limpia la pasta vieja de la CPU y el disipador con alcohol isopropílico al 90%+ y un hisopo.",
@@ -141,14 +152,15 @@ export const EXPLICACIONES = {
     ],
   },
 
-  // Ventilador
+  // Ventilador / refrigeración
   ventilador: {
     componente: "Ventilador / Sistema de refrigeración",
     descripcion:
       "Los ventiladores expulsan el aire caliente del gabinete y del disipador. " +
       "Un ventilador obstruido por polvo, con rodamiento desgastado o desconectado " +
       "deja sin refrigeración al sistema. La BIOS detecta RPM en cero y puede " +
-      "emitir pitidos, impedir el arranque o apagar el equipo por protección térmica.",
+      "emitir pitidos, impedir el arranque o apagar el equipo por protección térmica. " +
+      "El polvo acumulado también frena las RPM y eleva las temperaturas de toda la placa.",
     sintomasRelacionados: [
       "calentamiento",
       "ruido_excesivo",
@@ -156,6 +168,10 @@ export const EXPLICACIONES = {
       "pc_no_enciende",
       "pitidos_al_arrancar",
       "parpadeo_monitor",
+      "sistema_lento",
+      "congelamientos",
+      "reinicios_constantes",
+      "pantalla_negra",
     ],
     pasos: [
       "Al encender, observa si todos los ventiladores (CPU, GPU, gabinete) giran.",
@@ -195,11 +211,19 @@ export const EXPLICACIONES = {
       "Si alcanza temperaturas críticas (>95 °C en la mayoría de modelos), " +
       "activa el throttling térmico (baja su velocidad) y, si el calor persiste, " +
       "apaga el equipo por protección. Fallos internos de la CPU son menos comunes " +
-      "pero pueden causar congelamientos o reinicios impredecibles.",
+      "pero pueden causar congelamientos, pantallazos azules o reinicios impredecibles. " +
+      "Un error de arranque también puede indicar daño en los pines o el socket.",
     sintomasRelacionados: [
       "calentamiento",
       "congelamientos",
       "apagado_repentino",
+      "sistema_lento",
+      "pantalla_negra",
+      "pitidos_al_arrancar",
+      "pantallazo_azul",
+      "reinicios_constantes",
+      "error_no_bootable_device",
+      "parpadeo_monitor",
     ],
     pasos: [
       "Instala HWMonitor o CoreTemp y revisa la temperatura de la CPU en reposo y bajo carga.",
@@ -208,6 +232,7 @@ export const EXPLICACIONES = {
       "Verifica que el disipador esté firmemente sujeto y sin holgura.",
       "Descarta overclocking: regresa a valores por defecto en la BIOS si está activo.",
       "Si las temperaturas son normales pero hay congelamientos, evalúa la RAM y el disco primero.",
+      "Revisa visualmente los pines del socket (Intel) o de la CPU (AMD) buscando pines doblados.",
       "Un fallo de CPU propiamente dicho es raro; descarta otros componentes antes.",
     ],
     urgencia: "critica",
@@ -239,21 +264,28 @@ export const EXPLICACIONES = {
       "La fuente convierte la corriente alterna de la red eléctrica en los voltajes " +
       "que necesita cada componente (+12 V, +5 V, +3.3 V). " +
       "Si entrega voltajes inestables o insuficientes, el sistema se apaga sin aviso, " +
-      "no enciende, o puede provocar daños en la placa base, CPU y GPU. " +
-      "El olor a quemado indica un fallo grave e irreversible.",
+      "no enciende, o puede generar reinicios y congelamientos aleatorios. " +
+      "El olor a quemado indica un fallo grave e irreversible que puede dañar otros componentes.",
     sintomasRelacionados: [
       "apagado_repentino",
       "pc_no_enciende",
       "olor_a_quemado",
+      "reinicios_constantes",
+      "parpadeo_monitor",
+      "congelamientos",
+      "pantalla_negra",
+      "ruidos_metalicos",
+      "sistema_lento",
+      "pitidos_al_arrancar",
     ],
     pasos: [
-      "Huele el interior del gabinete: olor a quemado o plástico indica fallo grave — no enciendas más el equipo.",
+      "Huele el interior del gabinete: olor a quemado indica fallo grave — no enciendas más el equipo.",
       "Revisa que el cable de alimentación y el interruptor trasero de la PSU estén bien.",
       "Verifica que los conectores de 24 pines (placa base) y 8 pines (CPU) estén insertados completamente.",
       "Prueba con otra fuente compatible si tienes acceso a una.",
       "Usa un tester de PSU o multímetro para medir voltajes en los conectores Molex.",
       "Si la fuente está dañada, reemplázala antes de usar el equipo: puede dañar todos los componentes.",
-      "Al comprar reemplazo, verifica que tenga la potencia suficiente para tu configuración (usa PCPartPicker).",
+      "Al comprar reemplazo, verifica que tenga la potencia suficiente (usa PCPartPicker).",
     ],
     urgencia: "critica",
     herramientas: ["Tester de PSU", "Multímetro", "HWMonitor (voltajes)"],
@@ -285,7 +317,8 @@ export const EXPLICACIONES = {
       "Si falla su memoria de video (VRAM), aparecen artefactos visuales, " +
       "rayas o píxeles de colores. Un driver corrupto o desactualizado puede " +
       "causar pantalla negra o cierres inesperados. " +
-      "El sobrecalentamiento de la GPU también provoca apagados de protección.",
+      "El sobrecalentamiento de la GPU también provoca apagados de protección " +
+      "y congelamientos bajo carga gráfica.",
     sintomasRelacionados: [
       "artifacts_pantalla",
       "pantalla_negra",
@@ -293,6 +326,10 @@ export const EXPLICACIONES = {
       "calentamiento",
       "fallo_driver",
       "apagado_repentino",
+      "ruido_excesivo",
+      "congelamientos",
+      "reinicios_constantes",
+      "pantallazo_azul",
     ],
     pasos: [
       "Reinstala los drivers usando DDU (Display Driver Uninstaller) en modo seguro, luego instala la versión más reciente.",
@@ -326,6 +363,175 @@ export const EXPLICACIONES = {
       {
         titulo: "Stress test de GPU con FurMark",
         query: "furmark stress test gpu tutorial español artefactos",
+      },
+    ],
+  },
+
+  // Motherboard
+  placa_madre: {
+    componente: "Placa madre (Motherboard)",
+    descripcion:
+      "La placa madre es el circuito central que conecta e interconecta todos " +
+      "los componentes del sistema. Si sus condensadores fallan, sus pistas se dañan " +
+      "o los circuitos de alimentación se degradan, puede impedir el arranque, " +
+      "generar pitidos de POST, causar que la RAM o GPU no sean detectadas, " +
+      "o producir apagados y reinicios completamente aleatorios e impredecibles.",
+    sintomasRelacionados: [
+      "pc_no_enciende",
+      "pitidos_al_arrancar",
+      "pantalla_negra",
+      "reinicios_constantes",
+      "error_no_bootable_device",
+      "olor_a_quemado",
+      "parpadeo_monitor",
+      "congelamientos",
+      "apagado_repentino",
+      "artifacts_pantalla",
+    ],
+    pasos: [
+      "Observa la placa con una linterna: busca condensadores abombados, manchas quemadas o pistas dañadas.",
+      "Revisa los códigos de pitido POST de tu BIOS (consulta el manual de la placa) para identificar qué falla.",
+      "Si la placa tiene LED de diagnóstico o display de código Q-Code, úsalos para identificar el componente problemático.",
+      "Desconecta todos los periféricos no esenciales y arranca solo con CPU, RAM mínima y video.",
+      "Resetea la BIOS quitando la batería CMOS 30 segundos o usando el jumper CMOS_RST.",
+      "Verifica que el conector ATX de 24 pines y el EPS de 8 pines estén completamente insertados.",
+      "Si hay olor a quemado o condensadores visiblemente dañados, la placa debe reemplazarse.",
+      "Un fallo de placa madre es difícil de confirmar sin equipo de reemplazo; descarta CPU y RAM primero.",
+    ],
+    urgencia: "critica",
+    herramientas: ["Multímetro", "Tester de POST", "CPU-Z", "HWMonitor"],
+    videos: [
+      {
+        titulo: "Cómo identificar una placa madre dañada",
+        query:
+          "como saber si placa madre dañada condensadores quemados tutorial",
+      },
+      {
+        titulo: "Cómo leer los pitidos POST de la BIOS",
+        query: "pitidos bios post significado diagnostico placa madre tutorial",
+      },
+      {
+        titulo: "Cómo resetear la BIOS y la batería CMOS",
+        query: "como resetear bios bateria cmos jumper tutorial español",
+      },
+      {
+        titulo: "Cómo diagnosticar placa madre con mínimos componentes",
+        query:
+          "diagnostico placa madre minimos componentes arranque bios español",
+      },
+    ],
+  },
+
+  // Batería
+  bateria: {
+    componente: "Batería (laptops)",
+    descripcion:
+      "La batería de una laptop suministra energía cuando no está conectada a la red. " +
+      "Con el tiempo, sus celdas pierden capacidad y pueden inflamarse físicamente. " +
+      "Una batería degradada puede causar apagados sin previo aviso incluso con porcentaje " +
+      "alto mostrado en pantalla, impedir el arranque si está completamente descargada, " +
+      "o generar calentamiento excesivo debajo del equipo.",
+    sintomasRelacionados: [
+      "apagado_repentino",
+      "pc_no_enciende",
+      "sistema_lento",
+      "reinicios_constantes",
+      "no_carga",
+      "calentamiento",
+      "parpadeo_monitor",
+      "pantalla_negra",
+      "congelamientos",
+      "pitidos_al_arrancar",
+    ],
+    pasos: [
+      "Conecta el cargador original y verifica que el LED de carga encienda; si no lo hace, prueba con otro cargador.",
+      "En Windows: abre CMD y ejecuta 'powercfg /batteryreport' para ver el estado de salud de la batería.",
+      "Compara 'Design Capacity' con 'Full Charge Capacity': si la diferencia supera el 30%, la batería está degradada.",
+      "En el BIOS/UEFI de algunos fabricantes (Lenovo, HP, Dell) hay sección de diagnóstico de batería.",
+      "Prueba el equipo solo con el cargador (sin batería): si funciona bien, el problema es la batería.",
+      "Si la batería está físicamente hinchada (la tapa trasera se levanta), retírala de inmediato y no la uses.",
+      "Reemplaza la batería con una original o de fabricante reconocido; evita baterías genéricas de bajo costo.",
+    ],
+    urgencia: "moderada",
+    herramientas: ["powercfg /batteryreport", "BatteryInfoView", "HWMonitor"],
+    videos: [
+      {
+        titulo: "Cómo generar reporte de salud de batería en Windows",
+        query: "powercfg batteryreport windows salud bateria laptop tutorial",
+      },
+      {
+        titulo: "Cómo saber si la batería de tu laptop está dañada",
+        query: "como saber si bateria laptop dañada degradada sintomas español",
+      },
+      {
+        titulo: "Cómo cambiar la batería de una laptop",
+        query: "como cambiar bateria laptop tutorial paso a paso español",
+      },
+      {
+        titulo: "Batería hinchada: qué hacer y cómo retirarla con seguridad",
+        query: "bateria laptop hinchada que hacer como retirar seguridad",
+      },
+    ],
+  },
+
+  // Sistema operativo
+  sistema_operativo: {
+    componente: "Sistema operativo / Software",
+    descripcion:
+      "El sistema operativo administra todos los recursos del hardware. " +
+      "Archivos de sistema corruptos, drivers desactualizados o malware pueden " +
+      "provocar pantallazos azules, congelamientos y lentitud que imitan fallos de hardware. " +
+      "Antes de reemplazar cualquier componente físico, siempre conviene descartar " +
+      "una causa de software, ya que es más rápida y económica de resolver.",
+    sintomasRelacionados: [
+      "sistema_lento",
+      "congelamientos",
+      "pantallazo_azul",
+      "reinicios_constantes",
+      "archivos_corruptos",
+      "fallo_driver",
+      "error_no_bootable_device",
+      "pantalla_negra",
+      "apagado_repentino",
+      "parpadeo_monitor",
+    ],
+    pasos: [
+      "Ejecuta 'sfc /scannow' en CMD como administrador para reparar archivos de sistema corruptos.",
+      "Ejecuta 'DISM /Online /Cleanup-Image /RestoreHealth' si sfc reporta errores que no pudo reparar.",
+      "Busca malware con Malwarebytes (versión gratuita) en modo seguro.",
+      "Revisa el Visor de Eventos (eventvwr) buscando errores críticos en las horas previas al fallo.",
+      "Actualiza o reinstala los drivers problemáticos desde el Administrador de Dispositivos.",
+      "Si el problema persiste, realiza una reparación de Windows con el medio de instalación ('Reparar equipo').",
+      "Como último recurso, realiza una instalación limpia de Windows conservando tus archivos.",
+    ],
+    urgencia: "moderada",
+    herramientas: [
+      "sfc /scannow",
+      "DISM",
+      "Malwarebytes",
+      "Visor de Eventos",
+      "Administrador de Dispositivos",
+    ],
+    videos: [
+      {
+        titulo: "Cómo usar sfc /scannow y DISM para reparar Windows",
+        query:
+          "sfc scannow dism reparar windows tutorial español archivos corruptos",
+      },
+      {
+        titulo: "Cómo analizar el Visor de Eventos para diagnosticar errores",
+        query:
+          "visor eventos windows diagnostico errores criticos tutorial español",
+      },
+      {
+        titulo: "Cómo limpiar malware con Malwarebytes gratis",
+        query:
+          "malwarebytes tutorial español eliminar malware gratis modo seguro",
+      },
+      {
+        titulo: "Cómo reinstalar Windows sin perder archivos",
+        query:
+          "reinstalar windows sin perder archivos reparacion tutorial español",
       },
     ],
   },
